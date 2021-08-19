@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add("preencherCampos", (dadosPessoais) =>{
+
+    cy.get("#first-name").type(dadosPessoais.firstName);
+    cy.get("#last-name").type(dadosPessoais.lastName);
+    cy.get("#email").type(dadosPessoais.email);
+    cy.get("#agree").click()
+
+
+});

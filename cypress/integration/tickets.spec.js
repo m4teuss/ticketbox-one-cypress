@@ -61,7 +61,7 @@ describe(" Projeto Tickets", () => {
 
 
    // Preencher tudo 
-    it.only("preencher o formulario e resetar", () => {
+    it("preencher o formulario e resetar", () => {
 
         cy.get("header h1").should("contain" ,"TICKETBOX");
 
@@ -96,6 +96,23 @@ describe(" Projeto Tickets", () => {
 
 
 
+    // Função customizada ()
+    it.only("Preencher somente camoos obrigatórios do formulario de maneira customizada", () =>{
+
+        const dadosPessoais = {
+            firstName: " Debian",
+            lastName: "Silva",
+            email: "debian.silva@gmail.com"
+        }
+
+        // Chamando função e passando os dados. 
+        cy.preencherCampos(dadosPessoais);
+
+        cy.get("#agree").uncheck()
+        cy.get("button[type='submit']").should("be.disabled");
+
+
+    })
 
 
 
