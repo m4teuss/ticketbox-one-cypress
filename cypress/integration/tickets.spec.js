@@ -1,9 +1,8 @@
-
-
 describe(" Projeto Tickets", () => {
 
     // beforeEach: Antes de tudo acesse a page
     beforeEach(() => cy.visit("https://ticket-box.s3.eu-central-1.amazonaws.com/index.html"));
+
 
     // CY.GET("ELEMENTO").TYPE("VALOR A SER DIGITADO")
     it("Preencher campos do tipo texto", () => {
@@ -17,15 +16,18 @@ describe(" Projeto Tickets", () => {
         cy.get("#signature").type( `${firstName} ${lastName}`)
     })
 
+
     // CY.GET("ELEMENTO").SELECT("VALOR A SER SELECIONADO")
     it("Selecionar opção 2 do select", () =>{
         cy.get("#ticket-quantity").select("2")  
     })
 
+
     // CY.GET("ELEMENTO").CHECK()    
     it("Selecionar 'vip' no ticket type", () =>{
         cy.get("#vip").check();
     })
+
 
     // CY.GET("ELEMENTO").CHECK()
     // CY.GET("ELEMENTO").UNCHECK()
@@ -40,7 +42,6 @@ describe(" Projeto Tickets", () => {
     // Validando Titulo  CY.GET().SHOULD("CONTAIN", "TEXTO A SER VERIFICADO")
     it("Validar Titulo", () => {
         cy.get("header h1").should("contain" ,"TICKETBOX")
-
     })
 
 
@@ -59,7 +60,6 @@ describe(" Projeto Tickets", () => {
     })
 
 
-
    // Preencher tudo 
     it("preencher o formulario e resetar", () => {
 
@@ -70,17 +70,14 @@ describe(" Projeto Tickets", () => {
         const fullName = `${firstName} ${lastName}`;    
 
         cy.get("#first-name").type(firstName);
-        cy.get("#last-name").type(lastName);
-        
+        cy.get("#last-name").type(lastName);  
         cy.get("#email").type('samuca.thaylada@gmail.com');
         cy.get("#ticket-quantity").select("2");
         cy.get("#vip").check();
         cy.get("#social-media").check(); 
         cy.get("#requests").type('teste');
         cy.get(".agreement p").should("contain", `I, ${fullName}, wish to buy 2 VIP tickets.`);
-       
         cy.get("#agree").click()
-      
         cy.get("#signature").type( `${fullName}`);
 
         // validando se botão esta disponivel para click
@@ -93,7 +90,6 @@ describe(" Projeto Tickets", () => {
         cy.get("@btnentrar").should("be.disabled")        
   
     });
-
 
 
     // Função customizada ()
@@ -110,19 +106,7 @@ describe(" Projeto Tickets", () => {
 
         cy.get("#agree").uncheck()
         cy.get("button[type='submit']").should("be.disabled");
-
-
     })
-
-
-
-
-
-
-
-
-
-
 
     }) // fechando describe
 
