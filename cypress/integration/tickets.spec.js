@@ -1,6 +1,6 @@
 describe(" Tickets", () => {
 
-    // Acessando page
+    // beforeEach: Antes de tudo acesse a page
     beforeEach(() => cy.visit("https://ticket-box.s3.eu-central-1.amazonaws.com/index.html"));
 
 
@@ -19,10 +19,14 @@ describe(" Tickets", () => {
     })
 
 
-    it.only(" Selecionar opção 2 do select", () =>{
+    it("Selecionar opção 2 do select", () =>{
         cy.get("#ticket-quantity").select("2")  
     })
 
+    it.only("Selecionar 'vip' no ticket type", () =>{
+        cy.get("#vip").check();
+
+    })
 
 
     // Validando Titulo
