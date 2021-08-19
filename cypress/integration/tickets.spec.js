@@ -1,10 +1,10 @@
 describe(" Projeto Tickets", () => {
 
-    // beforeEach: Antes de tudo acesse a page
+    // beforeEach: Antes de tudo acesse a page.
     beforeEach(() => cy.visit("https://ticket-box.s3.eu-central-1.amazonaws.com/index.html"));
 
 
-    // CY.GET("ELEMENTO").TYPE("VALOR A SER DIGITADO")
+    // CY.GET("ELEMENTO").TYPE("VALOR A SER DIGITADO").
     it("Preencher campos do tipo texto", () => {
         const firstName = "Samuca"
         const lastName = "Thaylada"    
@@ -17,13 +17,13 @@ describe(" Projeto Tickets", () => {
     })
 
 
-    // CY.GET("ELEMENTO").SELECT("VALOR A SER SELECIONADO")
+    // CY.GET("ELEMENTO").SELECT("VALOR A SER SELECIONADO").
     it("Selecionar opção 2 do select", () =>{
         cy.get("#ticket-quantity").select("2")  
     })
 
 
-    // CY.GET("ELEMENTO").CHECK()    
+    // CY.GET("ELEMENTO").CHECK().    
     it("Selecionar 'vip' no ticket type", () =>{
         cy.get("#vip").check();
     })
@@ -39,7 +39,7 @@ describe(" Projeto Tickets", () => {
     })
 
 
-    // Validando Titulo  CY.GET().SHOULD("CONTAIN", "TEXTO A SER VERIFICADO")
+    // Validando Titulo  CY.GET().SHOULD("CONTAIN", "TEXTO A SER VERIFICADO").
     it("Validar Titulo", () => {
         cy.get("header h1").should("contain" ,"TICKETBOX")
     })
@@ -47,7 +47,7 @@ describe(" Projeto Tickets", () => {
 
     it("Validar quando email for incorreto", () =>{
 
-        // .as("email") é um alias(apelido) de email
+        // .as("email") é um alias(apelido) de email.
         cy.get("#email").as("email").type("email.invalido")
 
         cy.get("#email.invalid").should("exist")
@@ -60,7 +60,7 @@ describe(" Projeto Tickets", () => {
     })
 
 
-   // Preencher tudo 
+   // Preencher todos os campos do formulario. 
     it("preencher o formulario e resetar", () => {
 
         cy.get("header h1").should("contain" ,"TICKETBOX");
@@ -92,7 +92,7 @@ describe(" Projeto Tickets", () => {
     });
 
 
-    // Função customizada ()
+    // Função customizada ().
     it.only("Preencher somente camoos obrigatórios do formulario de maneira customizada", () =>{
 
         const dadosPessoais = {
@@ -108,7 +108,7 @@ describe(" Projeto Tickets", () => {
         cy.get("button[type='submit']").should("be.disabled");
     })
 
-    }) // fechando describe
+    }) // fechando describe.
 
   
     
