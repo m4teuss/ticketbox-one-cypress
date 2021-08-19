@@ -44,7 +44,7 @@ describe(" Projeto Tickets", () => {
     })
 
 
-    it.only("Validar quando email for incorreto", () =>{
+    it("Validar quando email for incorreto", () =>{
 
         // .as("email") é um alias(apelido) de email
         cy.get("#email").as("email").type("email.invalido")
@@ -56,11 +56,55 @@ describe(" Projeto Tickets", () => {
 
         // Validando que o elemento não existe no DOM
         cy.get("#email.invalid").should("not.exist")
-
-       
-
-
     })
+
+
+
+   // Preencher tudo 
+    it.only("preencher o formulario e resetar", () => {
+
+        cy.get("header h1").should("contain" ,"TICKETBOX");
+
+        const firstName = "Samuca";
+        const lastName = "Thaylada";
+        const fullName = `${firstName} ${lastName}`;    
+
+        cy.get("#first-name").type(firstName);
+        cy.get("#last-name").type(lastName);
+        
+        cy.get("#email").type('samuca.thaylada@gmail.com');
+        cy.get("#ticket-quantity").select("2");
+        cy.get("#vip").check();
+        cy.get("#social-media").check(); 
+        cy.get("#requests").type('teste');
+        cy.get(".agreement p").should("contain", `I, ${fullName}, wish to buy 2 VIP tickets.`);
+       
+        cy.get("#agree").click()
+      
+        cy.get("#signature").type( `${fullName}`);
+
+        // validando se botão esta disponivel para click
+        cy.get("button[type='submit']").as("btnentrar").should("not.be.disabled");
+
+        // clicando no botao
+        cy.get("button[type='reset'").click()
+
+        // validando se botão esta desabilitado
+        cy.get("@btnentrar").should("be.disabled")        
+  
+    });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }) // fechando describe
