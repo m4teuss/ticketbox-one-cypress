@@ -5,7 +5,7 @@
   $ git clone https://github.com/m4teuss/cypressx.git
 ```
 
-## Dependências Projeto:
+## Dependências:
 ```
   $ npm init
   $ npm install cypress --dev
